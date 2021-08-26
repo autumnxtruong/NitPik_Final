@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PhotoARCHive -Error</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/app-style.css}"/>
+</head>
+<div th:insert="fragments/app/side-menu :: side-menu"></div>
+
+<!-- Top menu on small screens -->
+<div th:insert="fragments/app/top-menu :: top-menu"></div>
+<div class="w3-main" style="margin-left:240px;margin-right:40px">
+
+
+
+
+
+    <img class="logo w3-margin" style="padding-left:20      %;height:400px;" th:src="@{images/wrong.png}" alt="Person">
+    <p style="font-size:50px;padding-left:30%">Something went wrong... </p>
+</div>
+
+<!-- End page content -->
+
+<div th:insert="fragments/app/footer :: footer"></div>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins", sans-serif;
+}
+body {
+  font-size: 16px;
+}
+
+.add-photo-button{
+  margin-top: 30px;
+  float: right;
+}
+
+.add-photo-button:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  width: 100%;
+}
+
+.file-input{
+  min-width: 400px;
+  margin-bottom: 30px;
+}
+
+.foundPhoto {
+
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 250px;
+  height:250px;
+}
+
+.masonry {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  grid-gap: 1em; /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat( 5, minmax( 100px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: fit-content; /* [3] Set the height for implicitly-created row track */
+}
+
+.material-icons {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+#menucontainer {
+  display:none;
+      background-color: #2196F3;
+  color: white;
+  min-width: 250px;
+  min-height: 325px;
+  padding: 40px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  top: 95px;
+  right: 40px;
+  position: absolute;
+  z-index: 1;
+}
+#menuwrap{
+
+}
+
+#menutoggle{
+  max-height: 45px;
+}
+
+.paragraph-title {
+  font-size: 40px;
+}
+
+#search-button {
+  float: right;
+  margin-top: 10px;
+}
+
+#search-button:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#search-input-field {
+  min-width: 100px !important;
+  max-width: 99.99% !important;
+  transition: width 0.25s;
+  text-align: left;
+}
+
+.tag {
+  padding: 3px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  float: left;
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  color:black;
+}
+
+.tag-container {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px;
+  background: white;
+  color:black;
+}
+
+.tag-container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.tag-holder {
+ }
+
+.tag-input {
+  flex: 1;
+  font-size: 16px;
+  padding: 5px;
+  margin: 8px;
+  outline: none;
+  border: 0;
+  height: 26px;
+  align-items: center;
+  float: left;
+  color:black;
+}
+
+.tag i:hover {
+  cursor: pointer;
+}
+
+.upload {
+  float: left;
+  width: 48%;
+  margin-left: 16px;
+}
+
+.url{
+
+}
+
+.url:after{
+  clear: both;
+}
+
+.url-input{
+  margin-bottom: 30px;
+  min-width: 400px;
+  padding: 11px;
+}
+
+.user-panel-container{
+  float: right;
+  width: 250px;
+  height: 45px;
+  margin-right: 16px;
+}
+
+.w3-half img {
+  margin-bottom: -6px;
+  margin-top: 16px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.w3-half img:hover {
+  opacity: 1;
+}

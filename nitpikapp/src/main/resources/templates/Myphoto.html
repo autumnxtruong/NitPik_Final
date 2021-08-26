@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>PhotoARCHive - Image service for architects</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/app-style.css}"/>
+
+</head>
+
+<body>
+<!-- Side menu on big screen -->
+<div th:insert="fragments/app/side-menu :: side-menu"></div>
+
+<!-- Top menu on small screens -->
+<div th:insert="fragments/app/top-menu :: top-menu"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:240px;margin-right:40px">
+
+    <div th:insert="fragments/app/user-panel :: user-panel"></div>
+
+
+
+    <div th:fragment="photo-gallery">
+        <div class="w3-container">
+            <h1 class="w3-xxxlarge w3-text-blue">
+                <b class="paragraph-title">Your photos.</b>
+            </h1>
+
+            <div class="masonry">
+                <div th:each="photo: ${foundPhotos}">
+                    <img class="foundPhoto" th:src="${photo.getUrl()}" th:id="${photo.getPhoto_id()}" th:name="${photo.isShared()}"  style="padding:10px"  th:alt="${photo.getTags()}" onclick="onClick(this)"/>
+                </div>
+            </div>
+
+            <!-- Modal for full size images on click-->
+            <div
+                    id="modal01"
+                    class="w3-modal w3-black"
+                    style="padding-top:0"
+
+            >
+                <span class="w3-button w3-black w3-xxlarge w3-display-topright" onclick="document.getElementById('modal01').style.display='none'">×</span>
+                <div
+                        class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64"
+                >
+                    <img id="img01" class="w3-image"/>
+                    <p    id="caption"></p>
+                    <div id="input"  >
+                        <div class="tag-container">
+                            <input id="search-input-field" class="tag-input"   />
+                        </div>
+
+
+                        <form
+                                  method="post"
+                                  th:action="@{/Myphoto/Edit-Tags}">
+                            <input
+                                    hidden
+                                    class="tag-holder"
+
+                                    type="text"
+
+                                    th:name="tagString"
+                            />
+                            <input
+                                    hidden
+                                    id="idp"
+
+                                    th:name="photoId"
+                            />
+                            <input style="float: left;lef:50%;"
+                                    id="search-button"
+                                    class="w3-button w3-blue "
+                                    type="submit"
+                                    value="Edit"
+                            />
+                        </form>
+                    </div>
+                    <span  >
+                  <form style="float: left; padding-top:10px;lef:50%; padding-right:5px;padding-left:5px;"  th:action="@{/Myphoto/Remove}" method="post" ><input name="Idphoto" id="idm" hidden="hidden" />
+
+                      <button type="submit" class="w3-button w3-red"> Delete </button>  </form>
+                     <form  style="float: left;lef:50%;padding-top:10px;" th:action="@{/Myphoto/share}" method="post" ><input name="share" id="share" hidden="hidden" /><input name="usershare" id="usershare" style="width:250px;float: right;
+margin-top:0px; height:40px;">
+                         <button  id="btns" type="submit" class="w3-button w3-green" style="margin-right:3px;"> share </button> </form>
+
+</span>
+
+
+
+            </div>
+        </div>
+        <script>
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+
+            var captionText = document.getElementById("caption");
+            var iddp = document.getElementById("idp");
+            let id=element.id;
+            iddp.value=id;
+            let tags = element.alt.replace('[', '').replace(']', '').replace(/,/g, ' ');
+            document.getElementById("idm").value=id;
+
+              document.getElementById("share").value=id;
+            captionText.innerHTML = tags;
+console.log(element.name);
+            if(element.name=="true"){
+             var text = document.getElementById("btns").firstChild;
+             text.data ="unshare";
+            }else{
+                 var text = document.getElementById("btns").firstChild;
+             text.data ="share";
+            }
+
+        }
+    </script>
+        <script th:src="@{/script/tag-panel-script.js}"></script>
+    </div>
+
+</div>
+<!-- End page content -->
+
+<div th:insert="fragments/app/footer :: footer"></div>
+
+</body>
+</html>

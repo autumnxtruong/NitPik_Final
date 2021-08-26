@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="user-panel">
+
+
+    <div id="menuwrap">
+        <div id="menutoggle" class="user-panel-container">
+            <i class="fa fa-user-circle" style="font-size: 40px; float: right;"></i>
+            <div style="float: right; margin-right: 10px; margin-top: 10px">
+                Welcome <span sec:authentication="name"></span>
+            </div>
+            <div id="menucontainer">
+                <i class="fa fa-user-circle" style="font-size: 80px;"></i>
+                <p>
+                    <span th:text="${userInfo.firstName}"></span>
+                    <span th:text="${userInfo.surname}"></span>
+                </p>
+                <p th:text="${userInfo.email}"></p>
+                <hr>
+                <a th:href="@{/logout}" class="w3-bar-item w3-button w3-white w3-hover-black">
+                    LOGOUT
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script>
+        $('html').click(function () {
+            $('#menucontainer').hide();
+        });
+
+        $('#menuwrap').click(function (event) {
+            event.stopPropagation();
+        });
+
+        $('#menutoggle').click(function (event) {
+            $('#menucontainer').slideToggle("fast");
+        });
+    </script>
+</div>
+
+
+</body>
+</html>

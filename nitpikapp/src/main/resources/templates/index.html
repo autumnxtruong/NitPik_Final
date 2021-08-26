@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>PhotoARCHive - Image service for architects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/webpage-style.css}"/>
+</head>
+<body>
+<div class="w3-row" style="height: 100%; width: 100%;">
+    <!--    left side   -->
+    <div class="w3-half w3-blue w3-container left-side">
+        <div class="w3-padding-64 w3-center">
+
+            <img class="logo w3-margin"  th:src="@{images/nit.PNG}" alt="Person">
+        </div>
+        <div class="arrow bounce">
+            <i class="fa fa-arrow-down fa-2x"></i>
+        </div>
+        <div class="w3-padding-16 w3-center">
+            <a th:href="@{/search}" class="start-button">GET STARTED !</a>
+        </div>
+    </div>
+    <!--    end of left side   -->
+
+    <!--    right side    -->
+    <div class="w3-half w3-container w3-center right-side">
+
+
+        <div th:insert="fragments/webpage/top-menu :: top-menu"></div>
+
+        <div class="welcome-content">
+            <h1 class="title">Welcome!</h1>
+            <p class="desc">NikPik is a photo-management web application equipped with the necessary features users need for securely managing and sharing photos. <br>
+                Basic features include allowing users to easily manage (upload, tag, or delete) their media. For organization and categorization,
+                users can create customizable <br> tags and tag their media for easier searchability. Such features make NitPik perfect
+                for those who are nitpicky about how they want to organize their photos.
+            </p>
+        </div>
+
+        <div th:insert="fragments/webpage/footer :: footer"></div>
+
+    </div>
+    <!--    end of right side   -->
+</div>
+</body>
+</html>
